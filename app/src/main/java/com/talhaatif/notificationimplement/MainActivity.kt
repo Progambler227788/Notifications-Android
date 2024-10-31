@@ -40,10 +40,13 @@ class MainActivity : AppCompatActivity() {
             notification.setContentTitle(binding.title.text.toString())
             notification.setContentText(binding.content.text.toString())
             notification.setSmallIcon(R.drawable.budgeting)
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,MainActivity2::class.java)
+            intent.putExtra("key",binding.content.text.toString())
             // pending inntent trigger huga future m like jab notiificaiton pa click kry tb
             // when we flag as zero tb ham data ni dal skty via notification
-            val pendingIntent = PendingIntent.getActivity(this,0,intent,0)
+            // 0 for no data
+            // PendingIntnet.FLAG_UPDATE_CURRENT for data passing
+            val pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
             // notification pa jab click kruga tu notification gyb huga or screen open hugi yani app
             // jab action pa clcik kruga tu notiifcation gyb ni huga or screen open b hugi
             notification.setPriority(NotificationCompat.PRIORITY_DEFAULT)
